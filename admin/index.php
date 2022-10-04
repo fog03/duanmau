@@ -15,6 +15,8 @@ if (isset($_GET["act"])) {
             include "danhmuc/add.php";
             break;
         case 'listdm':
+            $sql = "SELECT * FROM danhmuc order by name";
+            $listdanhmuc=pdo_query($sql);
             include "danhmuc/list.php";
             break;
         default:

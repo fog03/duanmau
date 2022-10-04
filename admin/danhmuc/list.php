@@ -11,30 +11,19 @@
                     <th>Tên loại</th>
                     <th></th>
                 </tr>
+                <?php
+                foreach($listdanhmuc as $danhmuc){
+                    extract($danhmuc);
+                ?>
                 <tr>
                     <td><input type="checkbox" name="" id=""></td>
-                    <td>0001</td>
-                    <td>Đồng hồ</td>
+                    <td><?php echo $id?></td>
+                    <td><?php echo $name?></td>
                     <td><input type="button" value="Sửa"><input type="button" value="Xóa"></td>
                 </tr>
-                <tr>
-                    <td><input type="checkbox" name="" id=""></td>
-                    <td>0001</td>
-                    <td>Đồng hồ</td>
-                    <td><input type="button" value="Sửa"><input type="button" value="Xóa"></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="" id=""></td>
-                    <td>0001</td>
-                    <td>Đồng hồ</td>
-                    <td><input type="button" value="Sửa"><input type="button" value="Xóa"></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="" id=""></td>
-                    <td>0001</td>
-                    <td>Đồng hồ</td>
-                    <td><input type="button" value="Sửa"><input type="button" value="Xóa"></td>
-                </tr>
+                <?php 
+                                }
+                ?>
             </table>
         </div>
         <div class="row mb10">

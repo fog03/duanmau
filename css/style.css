@@ -53,3 +53,10 @@ h1 {
     border-radius: 5px;
     border: 1px solid #6C7170;
 }
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+td{
+    padding: 0 8px;
+}

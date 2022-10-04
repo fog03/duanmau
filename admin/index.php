@@ -15,7 +15,7 @@ if (isset($_GET["act"])) {
             include "danhmuc/add.php";
             break;
         case 'listdm':
-            include "sanpham/list.php";
+            include "danhmuc/list.php";
             break;
         default:
             include "home.php";

@@ -2,6 +2,7 @@
 include "../model/pdo.php";
 include "header.php";
 include "../model/danhmuc.php";
+include "../model/sanpham.php";
 if (isset($_GET["act"])) {
     $act = $_GET["act"];
     switch ($act) {
@@ -22,8 +23,7 @@ if (isset($_GET["act"])) {
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 delete_dm($_GET['id']);
             }
-            $sql = "SELECT * FROM danhmuc order by id desc";
-            $listdanhmuc = pdo_query($sql);
+            $listdanhmuc = loadall_dm();
             include "danhmuc/list.php";
             break;
         case 'suadm':
@@ -42,9 +42,47 @@ if (isset($_GET["act"])) {
             $listdanhmuc = loadall_dm();
             include "danhmuc/list.php";
             break;
-        default:
-            include "home.php";
-            break;
+            /* sản phẩm*/
+
+            case 'addsp':
+                //kiểm tra xem người dùng có click vào nút add hay không
+                if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+                    $tenloai = $_POST['tenloai'];
+                    insert_sp($tenloai);
+                    $thongbao = "Thêm Thành công";
+                }
+                include "sanpham/add.php";
+                break;
+            case 'listsp':
+                $listsanpham= loadall_sp();
+                include "sanpham/list.php";
+                break;
+            case 'xoasp':
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    delete_sp($_GET['id']);
+                }
+                $listsanpham = loadall_sp();
+                include "sanpham/list.php";
+                break;
+            case 'suasp':
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    $dm=loadone_sp($_GET['id']);
+                }
+                include "sanpham/update.php";
+                break;
+            case 'updatesp':
+                if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                    $tenloai = $_POST['tenloai'];
+                    $id = $_POST['id'];
+                    update_sp($id,$tenloai);
+                    $thongbao = "Cập nhật Thành công";
+                }
+                $listsanpham = loadall_sp();
+                include "sanpham/list.php";
+                break;
+            default:
+                include "home.php";
+                break;
     }
 } else {
     include "home.php";

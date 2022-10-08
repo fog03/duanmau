@@ -28,7 +28,7 @@ if (isset($_GET["act"])) {
             break;
         case 'suadm':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                $dm=loadone_dm($_GET['id']);
+                $dm = loadone_dm($_GET['id']);
             }
             include "danhmuc/update.php";
             break;
@@ -36,7 +36,7 @@ if (isset($_GET["act"])) {
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
                 $tenloai = $_POST['tenloai'];
                 $id = $_POST['id'];
-                update_dm($id,$tenloai);
+                update_dm($id, $tenloai);
                 $thongbao = "Cập nhật Thành công";
             }
             $listdanhmuc = loadall_dm();
@@ -44,45 +44,57 @@ if (isset($_GET["act"])) {
             break;
             /* sản phẩm*/
 
-            case 'addsp':
-                //kiểm tra xem người dùng có click vào nút add hay không
-                if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
-                    $tenloai = $_POST['tenloai'];
-                    insert_sp($tenloai);
-                    $thongbao = "Thêm Thành công";
+        case 'addsp':
+            //kiểm tra xem người dùng có click vào nút add hay không
+            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+                $iddm = $_POST['iddm'];
+                $tensp = $_POST['tensp'];
+                $giasp = $_POST['giasp'];
+                $mota = $_POST['mota'];
+                $hinh = $_FILES['hinh']['name'];
+                $hinh = "../upload/";
+                $target_file = $hinh . basename($_FILES["hinh"]["name"]);
+                if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
+                    // echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+                } else {
+                    // echo "Sorry, there was an error uploading your file.";
                 }
-                include "sanpham/add.php";
-                break;
-            case 'listsp':
-                $listsanpham= loadall_sp();
-                include "sanpham/list.php";
-                break;
-            case 'xoasp':
-                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                    delete_sp($_GET['id']);
-                }
-                $listsanpham = loadall_sp();
-                include "sanpham/list.php";
-                break;
-            case 'suasp':
-                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                    $dm=loadone_sp($_GET['id']);
-                }
-                include "sanpham/update.php";
-                break;
-            case 'updatesp':
-                if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                    $tenloai = $_POST['tenloai'];
-                    $id = $_POST['id'];
-                    update_sp($id,$tenloai);
-                    $thongbao = "Cập nhật Thành công";
-                }
-                $listsanpham = loadall_sp();
-                include "sanpham/list.php";
-                break;
-            default:
-                include "home.php";
-                break;
+                insert_sp($tensp, $giasp, $hinh, $mota, $iddm);
+                $thongbao = "Thêm Thành công";
+            }
+            $listdanhmuc = loadall_dm();
+            include "sanpham/add.php";
+            break;
+        case 'listsp':
+            $listsanpham = loadall_sp();
+            include "sanpham/list.php";
+            break;
+        case 'xoasp':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_sp($_GET['id']);
+            }
+            $listsanpham = loadall_sp();
+            include "sanpham/list.php";
+            break;
+        case 'suasp':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $dm = loadone_sp($_GET['id']);
+            }
+            include "sanpham/update.php";
+            break;
+        case 'updatesp':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $tenloai = $_POST['tenloai'];
+                $id = $_POST['id'];
+                update_sp($id, $tenloai);
+                $thongbao = "Cập nhật Thành công";
+            }
+            $listsanpham = loadall_sp();
+            include "sanpham/list.php";
+            break;
+        default:
+            include "home.php";
+            break;
     }
 } else {
     include "home.php";

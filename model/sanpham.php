@@ -1,7 +1,7 @@
 <?php
 
-function insert_sp($tenloai){
-    $sql = "INSERT INTO sanpham(name) values('$tenloai')";
+function insert_sp($tensp,$giasp,$hinh,$mota,$iddm){
+    $sql = "INSERT INTO sanpham( name, price, img, mota, iddanhmuc) values('$tensp','$giasp','$hinh','$mota','$iddm')";
     pdo_execute($sql);
 }
 function delete_sp($id){

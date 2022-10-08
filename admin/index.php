@@ -51,22 +51,30 @@ if (isset($_GET["act"])) {
                 $tensp = $_POST['tensp'];
                 $giasp = $_POST['giasp'];
                 $mota = $_POST['mota'];
-                $hinh = $_FILES['hinh']['name'];
-                $hinh = "../upload/";
-                $target_file = $hinh . basename($_FILES["hinh"]["name"]);
+                $hinh = $_FILES["hinh"]["name"];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
                 if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
-                    // echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-                } else {
-                    // echo "Sorry, there was an error uploading your file.";
+                    
+                }else{
+
                 }
-                insert_sp($tensp, $giasp, $hinh, $mota, $iddm);
-                $thongbao = "Thêm Thành công";
+                insert_sp($tensp,$giasp,$hinh,$mota,$iddm);
+                $thongbao = "Thêm thành công";
             }
             $listdanhmuc = loadall_dm();
             include "sanpham/add.php";
             break;
         case 'listsp':
-            $listsanpham = loadall_sp();
+            if (isset($_POST["search"]) && ($_POST["search"])) {
+                $kyw = $_POST["kyw"];
+                $iddm = $_POST["iddm"];
+            }else{
+                $kyw = "";
+                $iddm = 0;
+            }
+            $listdanhmuc = loadall_dm();
+            $listsanpham = loadall_sp($kyw,$iddm);
             include "sanpham/list.php";
             break;
         case 'xoasp':

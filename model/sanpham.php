@@ -8,8 +8,15 @@ function delete_sp($id){
     $sql = "DELETE FROM sanpham WHERE id =" .$id;
     pdo_execute($sql);
 }
-function loadall_sp(){
-    $sql = "SELECT * FROM sanpham order by id desc";
+function loadall_sp($kyw,$iddm){
+    $sql = "SELECT * FROM sanpham WHERE 1";
+    if ($kyw!="") {
+        $sql.=" and name like '%".$kyw."%'";
+    }
+    if ($iddm >0) {
+        $sql.= " and iddanhmuc = '".$iddm."'";
+    }
+    $sql.= " order by id desc";   
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }

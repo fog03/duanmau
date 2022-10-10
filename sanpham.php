@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sản phẩm</title>
-    <link rel="stylesheet" href="/fontawesome-free-6.1.1-web/css/all.min.css">
-    <link rel="stylesheet" href="sanpham.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="../sanpham.css">
 </head>
 
 <body>
@@ -42,7 +42,8 @@
         </div>
         <nav>
             <div class="fulid">
-                <p><a href="index.html">Trang chủ</a><span> / </span><a href="sanpham.html">Danh mục</a><span> / </span><a href="">Tất cả sản phẩm</a></p>
+                <p><a href="index.html">Trang chủ</a><span> / </span><a href="sanpham.html">Danh mục</a><span> /
+                    </span><a href="">Tất cả sản phẩm</a></p>
             </div>
             <div class="banner">
                 <img src="img/banner-all-sp.jpg" alt="" style="width: 100%;

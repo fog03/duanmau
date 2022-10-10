@@ -81,23 +81,36 @@ if (isset($_GET["act"])) {
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 delete_sp($_GET['id']);
             }
-            $listsanpham = loadall_sp();
+            $listsanpham = loadall_sp("",0);
             include "sanpham/list.php";
             break;
         case 'suasp':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                $dm = loadone_sp($_GET['id']);
+                $sanpham = loadone_sp($_GET['id']);
             }
+            $listdanhmuc = loadall_dm();
             include "sanpham/update.php";
             break;
         case 'updatesp':
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                $tenloai = $_POST['tenloai'];
                 $id = $_POST['id'];
-                update_sp($id, $tenloai);
+                $iddm = $_POST['iddm'];
+                $tensp = $_POST['tensp'];
+                $giasp = $_POST['giasp'];
+                $mota = $_POST['mota'];
+                $hinh = $_FILES["hinh"]["name"];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
+                if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
+                    
+                }else{
+
+                }
+                update_sp($id,$iddm,$tensp,$giasp,$mota,$hinh);
                 $thongbao = "Cập nhật Thành công";
             }
-            $listsanpham = loadall_sp();
+            $listdanhmuc = loadall_dm();
+            $listsanpham = loadall_sp("",0);
             include "sanpham/list.php";
             break;
         default:

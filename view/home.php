@@ -1,63 +1,98 @@
 <nav>
-      <div class="banner">
-        <img class="owl-lazy" src="../view/img/banner.webp" alt="" style="opacity: 1;">
+  <div class="banner">
+    <img class="owl-lazy" src="../view/img/banner.webp" alt="" style="opacity: 1;">
+  </div>
+</nav>
+<article>
+  <div class="title-article">
+    <h1>HAIL SATAN COLLECTION</h1>
+  </div>
+  <div class="col-article">
+    <div class="content-article">
+      <div class="sale">
+        <span>-100%</span>
       </div>
-    </nav>
-    <article>
-      <div class="title-article">
-        <h1>HAIL SATAN COLLECTION</h1>
-      </div>
-      <div class="col-article">
-        <div class="content-article">
-          <div class="sale">
-            <span>-100%</span>
-          </div>
-          <div class="san-pham">
-            <a href="hailsatan-combo.html"><img src="../view/img/combo-hailsatan.png" /></a>
-            <div class="ten">
-              <a href="hailsatan-combo.html">HAILSATAN COMBO (CAP + T-SHIRT)</a>
-            </div>
-            <div class="gia">
-              <span>399,000₫</span> <del>3,000,000₫</del>
-            </div>
-          </div>
+      <div class="san-pham">
+        <a href="hailsatan-combo.html"><img src="../view/img/combo-hailsatan.png" /></a>
+        <div class="ten">
+          <a href="hailsatan-combo.html">HAILSATAN COMBO (CAP + T-SHIRT)</a>
         </div>
-        <div class="content-article">
+        <div class="gia">
+          <span>399,000₫</span> <del>3,000,000₫</del>
+        </div>
+      </div>
+    </div>
+    <div class="content-article">
+      <div class="san-pham">
+        <div class="sale">
+          <span>-100%</span>
+        </div>
+        <a href=""><img src="../view/img/T-shirt-hailsatan.png" /></a>
+        <div class="ten">
+          <a href="">HAILSATAN COMBO (CAP + T-SHIRT)</a>
+        </div>
+        <div class="gia">
+          <span>239,000₫</span> <del>1,000,000₫</del>
+        </div>
+      </div>
+    </div>
+    <div class="content-article">
+      <div class="san-pham">
+        <div class="sale">
+          <span>-100%</span>
+        </div>
+        <a href=""><img src="../view/img/cap-satan.png" /></a>
+        <div class="ten">
+          <a href="">HAIL SATAN T-SHIRT</a>
+        </div>
+        <div class="gia">
+          <span>239,000₫</span> <del>2,000,000₫</del>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+<aside>
+  <div class="title-all-sp">
+    <h1>Tất cả sản phẩm</h1>
+  </div>
+  <div class="col">
+    <?php
+    $i = 0;
+    foreach ($sanphamnew as $sp) {
+      extract($sp);
+      $hinh = $img_path.$img;
+      if (($i==2) || ($i == 5) || ($i == 8)) {
+        $content = "content";
+        $sp_content = "sp-content";
+        $ten = "ten";
+        $gia = "gia";
+      } else {
+        $content ="";
+        $sp_content = "";
+        $ten = "";
+        $gia = "";
+      }
+      
+      echo '<div class="content">
           <div class="san-pham">
             <div class="sale">
-              <span>-100%</span>
             </div>
-            <a href=""><img src="../view/img/T-shirt-hailsatan.png" /></a>
-            <div class="ten">
-              <a href="">HAILSATAN COMBO (CAP + T-SHIRT)</a>
-            </div>
-            <div class="gia">
-              <span>239,000₫</span> <del>1,000,000₫</del>
-            </div>
-          </div>
-        </div>
-        <div class="content-article">
-          <div class="san-pham">
-            <div class="sale">
-              <span>-100%</span>
-            </div>
-            <a href=""><img src="../view/img/cap-satan.png" /></a>
-            <div class="ten">
-              <a href="">HAIL SATAN T-SHIRT</a>
-            </div>
-            <div class="gia">
-              <span>239,000₫</span> <del>2,000,000₫</del>
+            <img src="'.$hinh.'" />
+            <div class="sp-content">
+              <div class="ten">
+                '.$name.'
+              </div>
+              <div class="gia">
+                <span>'.$price.'₫</span> <del>797,000₫</del>
+              </div>
+              <button><a href="hailsatan-combo.html">Xem thêm</a></button>
             </div>
           </div>
-        </div>
-      </div>
-    </article>
-    <aside>
-      <div class="title-all-sp">
-        <h1>Tất cả sản phẩm</h1>
-      </div>
-      <div class="col">
-        <div class="content">
+        </div>';
+    }
+    ?>
+    <!-- <div class="content">
           <div class="san-pham">
             <div class="sale">
             </div>
@@ -295,6 +330,6 @@
               <button>Xem thêm</button>
             </div>
           </div>
-        </div>
-      </div>
-    </aside>
+        </div> -->
+  </div>
+</aside>

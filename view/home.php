@@ -61,6 +61,7 @@
     $i = 0;
     foreach ($sanphamnew as $sp) {
       extract($sp);
+      $linksp = "index.php?act=sanphamct&idsp=".$id;
       $hinh = $img_path.$img;
       if (($i==2) || ($i == 5) || ($i == 8)) {
         $content = "content";
@@ -86,7 +87,7 @@
               <div class="gia">
                 <span>'.$price.'₫</span> <del>797,000₫</del>
               </div>
-              <button><a href="hailsatan-combo.html">Xem thêm</a></button>
+              <button><a href="'.$linksp.'">Chi tiết</a></button>
             </div>
           </div>
         </div>';

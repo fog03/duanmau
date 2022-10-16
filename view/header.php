@@ -7,15 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../fontawesome-free-6.1.1-web/css/all.min.css">
   <link rel="stylesheet" href="../view/css/index.css">
+  <link rel="stylesheet" href="../view/css/sanpham.css">
   <title>Triple6</title>
 </head>
 
 <body>
   <div class="container">
     <header>
-      <div class="header-top">
-        <p>FREESHIP CHO ĐƠN HÀNG CÓ TỔNG GIÁ TRỊ TRÊN 500k👌</p>
-      </div>
       <div class="header-bot">
         <div class="logo"><a href="index.php"><img src="../view/img/giphy.webp"
               alt="TRIPLE6"></a></div>
